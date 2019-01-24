@@ -16,6 +16,39 @@ import trackConfig from './tracks/index';
 new Tracker({ tracks: trackConfig });
 ```
 
+3、加入你的埋点信息
+
+```
+/**
+ * path 页面路径
+ * elementTracks 页面元素埋点
+ * methodTracks 执行函数埋点
+ */
+const tracks = {
+  path: 'pages/film/index',
+  elementTracks: [
+    {
+      element: '.playing-item',
+      dataKeys: ['imgUrls', 'playingFilms[$INDEX].filmId', 'playingFilms[0]'],
+    },
+    {
+      element: '.more',
+      dataKeys: ['imgUrls', 'playingFilms', '$DATASET.test'],
+    }
+  ],
+  methodTracks: [
+    {
+      method: 'getBanner',
+      dataKeys: ['imgUrls'],
+    },
+    {
+      method: 'toBannerDetail',
+      dataKeys: ['imgUrls'],
+    },
+  ],
+};
+```
+
 
 
 ### 方案实现说明
